@@ -41,7 +41,7 @@ export default {
             horas_funcionamento,
             aberto_fds,
         } = request.body;
-    
+        console.log('verificação de envio, antes do repositorioorfanato');
         const orphanagesRepository = getRepository(Orfanato);
     
         const requestImages = request.files as Express.Multer.File[];
@@ -59,7 +59,7 @@ export default {
             aberto_fds: aberto_fds === 'true',
             images, 
         }
-
+        console.log('verificação de envio antes do yup');
         const schema = Yup.object().shape({
             name: Yup.string().required('campo obrigatorio'),
             latitude: Yup.number().required(),
@@ -74,7 +74,7 @@ export default {
                 })
             )
         });
-
+        console.log('verificação de envio antes schema validate');
         await schema.validate(data, {
             abortEarly: false,
         })
