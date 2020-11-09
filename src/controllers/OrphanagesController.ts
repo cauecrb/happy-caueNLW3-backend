@@ -47,7 +47,11 @@ export default {
         const requestImages = request.files as Express.Multer.File[];
         const images = requestImages.map(image => {
             return { path: image.filename}
+
         })
+
+        console.log('verificação de envio, images');
+        console.log(images);
       
         const data ={
             name,
