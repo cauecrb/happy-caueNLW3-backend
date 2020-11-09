@@ -44,7 +44,7 @@ export default {
         console.log('verificação de envio, antes do repositorioorfanato');
         const orphanagesRepository = getRepository(Orfanato);
     
-        const requestImages = request.files as Express.Multer.File[];
+        const requestImages = request.files as Express.MulterS3.File[];
         const images = requestImages.map(image => {
             return { path: image.filename}
 
