@@ -70,7 +70,7 @@ export default {
             aberto_fds: Yup.boolean().required(),
             images: Yup.array(
                 Yup.object().shape({
-                    path: Yup.string().required()
+                    path: Yup.string()/*.required()*/
                 })
             )
         });
