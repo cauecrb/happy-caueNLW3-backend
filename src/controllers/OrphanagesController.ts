@@ -79,6 +79,9 @@ export default {
             abortEarly: false,
         })
 
+        console.log('verificação de envio');
+        console.log(data);
+
         const orphanage = orphanagesRepository.create(data);
     
         await orphanagesRepository.save(orphanage);
