@@ -56,7 +56,7 @@ export default {
 //        console.log(images);
 
         const images = requestImages.map(image => {
-            return { path: image.filename}
+            return { path: image.path}
 
         })
       
