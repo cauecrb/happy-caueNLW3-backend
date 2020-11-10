@@ -3,6 +3,7 @@ import {getRepository} from 'typeorm';
 import Orfanato from '../models/Orfanato';
 import orphanageView from '../views/orphanages_views';
 import * as Yup from 'yup';
+import nomfotos from '../config/upload';
 
 
 export default {
@@ -44,14 +45,20 @@ export default {
         console.log('verificação de envio, antes do repositorioorfanato');
         const orphanagesRepository = getRepository(Orfanato);
     
-        const requestImages = request.files as Express.MulterS3.File[];
+        const requestImages = request.files as Express.Multer.File[];
+        console.log(requestImages);
+/*         const images = requestImages.map(image => {
+            return { path: image.filename}
+
+        }) */
+
+        console.log('verificação de envio, images');
+//        console.log(images);
+
         const images = requestImages.map(image => {
             return { path: image.filename}
 
         })
-
-        console.log('verificação de envio, images');
-        console.log(images);
       
         const data ={
             name,
