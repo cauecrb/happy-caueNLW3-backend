@@ -42,18 +42,10 @@ export default {
             horas_funcionamento,
             aberto_fds,
         } = request.body;
-        console.log('verificação de envio, antes do repositorioorfanato');
         const orphanagesRepository = getRepository(Orfanato);
     
         const requestImages = request.files as Express.MulterS3.File[];
-        console.log(requestImages);
-/*         const images = requestImages.map(image => {
-            return { path: image.filename}
 
-        }) */
-
-        console.log('verificação de envio, images');
-//        console.log(images);
 
         const images = requestImages.map(image => {
             return { path: image.key}
@@ -85,13 +77,9 @@ export default {
                 })
             )
         });
-        console.log('verificação de envio antes schema validate');
         await schema.validate(data, {
             abortEarly: false,
         })
-
-        console.log('verificação de envio');
-        console.log(data);
 
         const orphanage = orphanagesRepository.create(data);
     
